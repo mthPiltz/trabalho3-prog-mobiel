@@ -6,13 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".view.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+    <FrameLayout
+        android:id="@+id/novo_usuario"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginBottom="150dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+    <Button
+        android:layout_marginVertical="250dp"
+        android:id="@+id/btnNovoUsuario"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:text="Cadastre-se"
+        android:textSize="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/novo_usuario"
+        tools:layout_editor_absoluteX="-16dp" />
+
+    </FrameLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
