@@ -3,6 +3,7 @@ package com.example.trabalho3.view;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Patterns;
 import android.view.LayoutInflater;
@@ -56,8 +57,19 @@ public class CadastrarUsuario extends Fragment {
                 usuario.setNome(nome);
                 usuario.setSenha(senhaCriptografada);
 
-                db.usuarioDao().insert(usuario);
-                Toast.makeText(getActivity(), "Usuario inserido", Toast.LENGTH_SHORT).show();
+
+                new Thread(() -> {
+                    db.usuarioDao().insert(usuario);
+
+                    getActivity().runOnUiThread(() -> {
+                        Toast.makeText(getActivity(), "Usuário inserido", Toast.LENGTH_SHORT).show();
+
+                        Fragment login = new Logar();
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();;
+                        transaction.replace(R.id.novo_usuario, login);
+                        transaction.commit();
+                    });
+                }).start();
             }
         });
 

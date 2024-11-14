@@ -8,17 +8,17 @@
     android:padding="20dp">
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/txtEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="text"
         android:text=""
-        android:hint="Nome"
+        android:hint="E-mail"
         android:layout_marginTop="20dp"/>
 
     <EditText
-        android:id="@+id/editTextText2"
+        android:id="@+id/txtSenha"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -27,7 +27,7 @@
         android:layout_marginTop="20dp"/>
 
     <Button
-        android:id="@+id/Login"
+        android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:text="Entrar"
