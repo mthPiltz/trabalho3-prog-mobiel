@@ -1,5 +1,7 @@
 package com.example.trabalho3.view;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -41,6 +43,13 @@ public class Logar extends Fragment {
                 Usuario usuario = db.usuarioDao().getByEmail(email, senha);
 
                 if(usuario != null){
+                    SharedPreferences sharedPreferences = getActivity().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putInt("userId", usuario.getId());
+                    editor.putString("userName", usuario.getNome());
+                    editor.putString("userEmail", usuario.getEmail());
+                    editor.apply();
+
                     Toast.makeText(getActivity(), "Ta logado", Toast.LENGTH_SHORT).show();
                 }
                 else{
