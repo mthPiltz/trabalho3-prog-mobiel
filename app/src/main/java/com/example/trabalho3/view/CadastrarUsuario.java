@@ -65,7 +65,7 @@ public class CadastrarUsuario extends Fragment {
                         Toast.makeText(getActivity(), "Usuário inserido", Toast.LENGTH_SHORT).show();
 
                         Fragment login = new Logar();
-                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();;
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.novo_usuario, login);
                         transaction.commit();
                     });

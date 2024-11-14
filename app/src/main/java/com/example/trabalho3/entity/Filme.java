@@ -16,4 +16,9 @@ public class Filme {
     public String getNome() { return Nome; }
 
     public void setNome(String nome) { Nome = nome; }
+
+    @Override
+    public String toString(){
+        return Nome;
+    }
 }

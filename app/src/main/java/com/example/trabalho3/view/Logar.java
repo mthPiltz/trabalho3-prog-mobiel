@@ -1,6 +1,7 @@
 package com.example.trabalho3.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -17,11 +18,13 @@ import com.example.trabalho3.database.AppDatabase;
 import com.example.trabalho3.databinding.FragmentCadastrarUsuarioBinding;
 import com.example.trabalho3.databinding.FragmentLogarBinding;
 import com.example.trabalho3.entity.Usuario;
+import com.example.trabalho3.view.filmes.Filmes;
 
 
 public class Logar extends Fragment {
     private FragmentLogarBinding binding;
     private AppDatabase db;
+    private Intent intent;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,7 +53,7 @@ public class Logar extends Fragment {
                     editor.putString("userEmail", usuario.getEmail());
                     editor.apply();
 
-                    Toast.makeText(getActivity(), "Ta logado", Toast.LENGTH_SHORT).show();
+                    abrirTelaFilmes();
                 }
                 else{
                     Toast.makeText(getActivity(), "Email ou senha incorretos", Toast.LENGTH_SHORT).show();
@@ -59,5 +62,10 @@ public class Logar extends Fragment {
         });
 
         return binding.getRoot();
+    }
+
+    private void abrirTelaFilmes(){
+        intent = new Intent(getActivity(), Filmes.class);
+        startActivity(intent);
     }
 }
