@@ -8,4 +8,11 @@
     <string name="Salvar">Salvar</string>
     <string name="Logar">Logar</string>
     <string name="Cadastrar">Cadastre-se</string>
+    <string-array name="avaliacoes">
+        <item>Muito ruim</item>
+        <item>Ruim</item>
+        <item>Regular</item>
+        <item>Bom</item>
+        <item>Muito bom</item>
+    </string-array>
 </resources>
