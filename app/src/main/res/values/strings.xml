@@ -3,4 +3,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="Adicionar">Adicionar</string>
+    <string name="Editar">Editar</string>
+    <string name="Excluir">Excluir</string>
+    <string name="Salvar">Salvar</string>
+    <string name="Logar">Logar</string>
+    <string name="Cadastrar">Cadastre-se</string>
 </resources>

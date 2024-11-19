@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
@@ -46,6 +47,25 @@ public class Filmes extends AppCompatActivity {
             }
         });
 
+        binding.listFilmes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
+                Filme f = (Filme)parent.getItemAtPosition(position);
+                FilmeFragment filmeFragment = FilmeFragment.newInstance(f.getId());
+
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.frame_filme, filmeFragment)
+                        .addToBackStack(null)
+                        .commit();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
         getSupportFragmentManager().setFragmentResultListener("atualizarSpinner", this, (requestKey, result) -> {
             carregaFilmes();
         });
@@ -58,9 +78,15 @@ public class Filmes extends AppCompatActivity {
     }
 
     private void carregaFilmes(){
+        int posicaoSelecionada = binding.listFilmes.getSelectedItemPosition();
+
         List<Filme> filmes = db.filmeDao().getAll();
         ArrayAdapter<Filme> adapter = new ArrayAdapter<Filme>(this,
                 android.R.layout.simple_list_item_1, filmes);
         binding.listFilmes.setAdapter(adapter);
+
+        if (posicaoSelecionada >= 0 && posicaoSelecionada < filmes.size()) {
+            binding.listFilmes.setSelection(posicaoSelecionada);
+        }
     }
 }

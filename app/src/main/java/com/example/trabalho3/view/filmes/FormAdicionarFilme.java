@@ -23,7 +23,7 @@ public class FormAdicionarFilme extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = com.example.trabalho3.databinding.FragmentFormAdicionarFilmeBinding.inflate(inflater, container, false);
+        binding = FragmentFormAdicionarFilmeBinding.inflate(inflater, container, false);
         db= AppDatabase.getDatabase(requireContext());
 
         binding.btnNovoFilme.setOnClickListener(new View.OnClickListener() {
@@ -44,8 +44,9 @@ public class FormAdicionarFilme extends Fragment {
     }
 
     private void removerFragmento(){
-        Button btnAdicionarActivity = getActivity().findViewById(R.id.btnNovoFilmeA);
+        getParentFragmentManager().setFragmentResult("atualizarSpinner", new Bundle());
 
+        Button btnAdicionarActivity = getActivity().findViewById(R.id.btnNovoFilmeA);
         if (btnAdicionarActivity != null) {
             btnAdicionarActivity.setVisibility(View.VISIBLE);
         }
