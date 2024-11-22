@@ -31,4 +31,7 @@ public interface AvaliacaoDao {
 
     @Query("SELECT * FROM avaliacao WHERE IdFilme = :IdFilme")
     Avaliacao getByFilme(int IdFilme);
+
+    @Query("SELECT * FROM avaliacao WHERE IdFilme = :IdFilme AND IdUsuario = :IdUsuario")
+    Avaliacao getByFilmeUser(int IdUsuario, int IdFilme);
 }

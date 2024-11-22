@@ -36,6 +36,7 @@ public  class Util {
         Usuario user = new Usuario();
         user.setNome(userName);
         user.setEmail(userEmail);
+        user.setId(userId);
 
         return user;
     }
