@@ -48,10 +48,7 @@ public class FilmeFragment extends Fragment {
         binding.lblNomeFilme.setText(filme.getNome());
 
         Avaliacao avaliacao = db.avaliacaoDao().getByFilmeUser(user.getId(), filmeId);
-        if(avaliacao != null){
-            binding.txtComentario.setText(avaliacao.getComentario());
-            binding.lblComentario.setText(avaliacao.getComentario());
-        }
+
 
         binding.btnExcluirFilme.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,8 +88,7 @@ public class FilmeFragment extends Fragment {
 
                 Filme filme = db.filmeDao().getById(filmeId);
                 filme.setNome(binding.txtNomeFilme.getText().toString());
-
-
+                db.filmeDao().update(filme);
 
                 Avaliacao avaliacao = db.avaliacaoDao().getByFilmeUser(user.getId(), filmeId);
                 if(avaliacao == null)
@@ -102,7 +98,9 @@ public class FilmeFragment extends Fragment {
                 avaliacao.setIdFilme(filmeId);
                 avaliacao.setIdUsuario(user.getId());
 
-                db.filmeDao().update(filme);
+                int nota = binding.avaliacao.getSelectedItemPosition() + 1;
+                avaliacao.setNota(nota);
+
 
                 if(avaliacao.getId() != 0){
                     db.avaliacaoDao().update(avaliacao);
@@ -130,6 +128,15 @@ public class FilmeFragment extends Fragment {
         );
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         binding.avaliacao.setAdapter(adapter);
+
+        if(avaliacao != null){
+            binding.txtComentario.setText(avaliacao.getComentario());
+            binding.lblComentario.setText(avaliacao.getComentario());
+
+            Integer nota = avaliacao.getNota() - 1;
+            if(nota != null)
+                binding.avaliacao.setSelection(nota);
+        }
 
         return binding.getRoot();
     }

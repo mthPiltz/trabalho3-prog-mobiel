@@ -27,12 +27,15 @@ public class Avaliacao {
     private int IdFilme;
     private int IdUsuario;
     private String Comentario;
+    private Integer Nota;
+
 
     public int getId() { return Id; }
 
     public void setId(int id) { Id = id; }
 
     public int getIdFilme() { return IdFilme; }
+    public Integer getNota(){ return Nota; }
 
     public void setIdFilme(int idFilme) { IdFilme = idFilme; }
 
@@ -43,4 +46,5 @@ public class Avaliacao {
     public String getComentario() { return Comentario; }
 
     public void setComentario(String comentario) { Comentario = comentario; }
+    public void setNota(int nota) { Nota = nota; }
 }
